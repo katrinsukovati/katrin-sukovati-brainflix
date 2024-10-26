@@ -1,0 +1,112 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px;
+
+  @include tablet {
+    margin: 16px 0;
+    padding: 0 35px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  @include desktop {
+    margin: 16px auto;
+    padding: 0 0;
+    max-width: 63.75rem;
+  }
+
+  // Logo
+  &__logo {
+    max-height: 25px;
+    max-width: 120px;
+    display: flex;
+    align-self: center;
+    margin: 16px 0rpx;
+    @include tablet {
+      height: 32px;
+      margin: 16px;
+    }
+  }
+
+  // This includes all options in the header like search, upload, and the user profile
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    @include tablet {
+      width: 65%;
+    }
+    @include desktop {
+      justify-content: flex-end;
+    }
+  }
+
+  //   Upload button
+  &__upload-button {
+    background-color: $BrainFlix-Blue;
+    color: $White;
+    border: $BrainFlix-Blue;
+    font-weight: 600;
+    width: 100%;
+    background-image: url("../../assets/icons/upload.svg");
+    background-repeat: no-repeat;
+    background-position: left 12px center;
+    order: 1;
+    height: 52px;
+    border-radius: 4px;
+    @include tablet {
+      width: 35%;
+    }
+    @include desktop {
+      width: 30%;
+      margin-left: 16px;
+    }
+    &:hover {
+      background-color: $BrainFlix-DarkBlue;
+    }
+  }
+
+  //   User icon image
+  &__user {
+    order: 0;
+    height: 50px;
+    width: 50px;
+    background-image: url("../../assets/images/Mohan-muruge.jpg");
+    background-size: cover;
+    border-radius: 50px;
+    @include tablet {
+      order: 1;
+    }
+    @include desktop {
+      margin-left: 35px;
+    }
+  }
+
+  &__search {
+    width: 85%;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: $BrainFlix-DarkBlack;
+    border: 1.5px solid $Mercury;
+    border-radius: 4px;
+    background-color: $White;
+    background-image: url("../../assets/icons/search.svg");
+    background-repeat: no-repeat;
+    background-position: left 16px center;
+    padding: 16px 16px 16px 45px;
+    @include tablet {
+      width: 50%;
+      margin-bottom: 0;
+    }
+    @include desktop {
+      width: 36%;
+      order: 0;
+    }
+  }
+}

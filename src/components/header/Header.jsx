@@ -6,7 +6,7 @@ function Header() {
     <div className="header">
       <img className="header__logo" src={brainFlixLogo} alt="BrainFlix Logo" />
       <div className="header__options">
-        <input className="" type="text" placeholder="Search" />
+        <input className="header__search" type="text" placeholder="Search" />
         <button className="header__upload-button">UPLOAD</button>
         <div className="header__user"></div>
       </div>
