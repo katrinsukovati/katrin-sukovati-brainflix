@@ -1,0 +1,53 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.video-thumbnail {
+  display: flex;
+  padding: 6px 0;
+  font-size: 16px;
+
+  &__img {
+    width: 130px;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  &__section {
+    padding: 0.5rem 0;
+    margin-left: 16px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include desktop {
+      padding: 0;
+    }
+  }
+
+  &__title {
+    width: 100%;
+    font-weight: 700;
+    margin: 0;
+    font-size: 14px;
+    line-height: 16px;
+    @include tablet {
+      font-size: 16px;
+    }
+    @include desktop {
+      font-size: 14px;
+    }
+  }
+
+  &__author {
+    margin: 0;
+    font-size: 12px;
+    line-height: 16px;
+    @include tablet {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
