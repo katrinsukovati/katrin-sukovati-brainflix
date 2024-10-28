@@ -4,16 +4,25 @@
 @use "../../styles/partials/typography" as *;
 
 .video-details {
-  padding: 30px 15px;
+  padding-top: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 0;
   @include tablet {
-    padding: 30px 35px;
+    padding-top: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 0;
   }
   @include desktop {
-    padding: 30px 0;
+    padding-top: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 0;
   }
   &__header {
-    text-align: left;
     display: flex;
+    text-align: left;
   }
   &__info {
     border-bottom: 2px solid $Mercury;
@@ -21,43 +30,33 @@
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
-    @include desktop {
-      padding: 15px 30px 15px 0;
-    }
   }
   &__left-section {
-    width: 50%;
+    width: 45%;
     gap: 25px;
-    @include tablet {
-      display: flex;
-      align-items: flex-end;
-    }
   }
   &__channel {
+    margin-right: 15px;
     display: flex;
-    font-weight: 700;
-    margin-right: 16px;
     padding-bottom: 15px;
-    @include tablet {
-      padding: 0;
-    }
+    font-weight: 700;
   }
   &__right-section {
+    @include tablet {
+      flex-direction: row;
+    }
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
     color: $Silver;
     width: 50%;
-    @include tablet {
-      flex-direction: row;
-    }
   }
   &__likes-icon {
-    margin-right: 10px;
+    margin-right: 12px;
   }
   &__views-icon {
     max-width: 25px;
-    margin-right: 10px;
+    margin-right: 12px;
   }
   &__day {
     color: $Silver;
@@ -67,25 +66,26 @@
   &__likes-section {
     display: flex;
     align-items: center;
-    padding-bottom: 15px;
+    padding-bottom: 16px;
     @include tablet {
       padding-bottom: 0;
-      padding-right: 15px;
+      padding-right: 16px;
     }
   }
-  &__desc {
-    padding: 15px 0 25px 0;
-    line-height: 20px;
-    @include tablet {
-      line-height: 20px;
-      padding: 15px 0 30px 0;
-    }
-    @include desktop {
-      padding: 16px 16px 48px 0;
-    }
-  }
+
   &__comments {
-    font-weight: 700;
     display: flex;
+    font-weight: 700;
+  }
+
+  &__desc {
+    line-height: 20px;
+    padding-top: 16px;
+    padding-bottom: 25px;
+    @include tablet {
+      padding-top: 15px;
+      padding-bottom: 30px;
+      line-height: 20px;
+    }
   }
 }
