@@ -4,6 +4,11 @@
 @use "../../styles/partials/typography" as *;
 
 .header {
+  &__link {
+    display: flex;
+    justify-content: center;
+  }
+
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -26,8 +31,9 @@
     max-height: 25px;
     max-width: 120px;
     display: flex;
+    justify-content: center;
     align-self: center;
-    margin: 16px 0rpx;
+    margin: 16px 0px;
     @include tablet {
       height: 32px;
       margin: 16px;
@@ -49,26 +55,30 @@
 
   //   Upload button
   &__upload-button {
-    background-color: $BrainFlix-Blue;
-    color: $White;
-    border: $BrainFlix-Blue;
-    font-weight: 600;
-    width: 100%;
     background-image: url("../../assets/icons/upload.svg");
+    background-position: left 1rem center;
     background-repeat: no-repeat;
-    background-position: left 12px center;
+    width: 100%;
     order: 1;
-    height: 52px;
-    border-radius: 4px;
+    height: 3.45rem;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $BrainFlix-Blue;
+    border: $BrainFlix-Blue;
+    border-radius: 0.25rem;
+    color: $White;
+    margin: 1rem 0;
     @include tablet {
       width: 35%;
+      order: 0;
+      text-align: center;
+      margin: 0;
     }
     @include desktop {
+      margin-left: 1rem;
       width: 30%;
-      margin-left: 16px;
-    }
-    &:hover {
-      background-color: $BrainFlix-DarkBlue;
     }
   }
 

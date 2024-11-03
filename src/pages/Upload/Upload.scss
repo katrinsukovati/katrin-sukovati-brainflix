@@ -1,0 +1,161 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.upload-video {
+  @include desktop {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__container {
+    margin-top: 1rem;
+    padding: 0 1rem;
+
+    @include tablet {
+      padding: 0 2rem;
+    }
+    @include desktop {
+      margin: 0 auto;
+      max-width: 65rem;
+      padding: 0;
+    }
+  }
+
+  &__header {
+    color: $BrainFlix-Black;
+    font-weight: 700;
+    line-height: 2rem;
+    margin: 1.5rem 0;
+
+    @include tablet {
+      margin-top: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid $Mercury;
+    }
+  }
+
+  // Image section
+  &__img-container {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      width: 50%;
+    }
+    @include desktop {
+      width: 35%;
+      display: flex;
+      justify-content: center;
+      border-bottom: 2px solid $Mercury;
+    }
+  }
+  &__img {
+    width: 100%;
+    margin: 1rem 0 2rem 0;
+    border-radius: 0.3rem;
+  }
+  &__img-label {
+    font-weight: 300;
+    color: $Silver;
+  }
+
+  // Title section
+  &__title-container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__title-label {
+    color: $Silver;
+    font-weight: 300;
+  }
+  &__title-input {
+    width: 100%;
+    height: 2.5rem;
+    margin: 1rem 0 1rem 0;
+    padding-left: 0.8rem;
+    background-color: $Alabaster;
+    border: 1px solid $Silver;
+    border-radius: 0.3rem;
+    color: $BrainFlix-Black;
+  }
+
+  // Description section
+  &__description-container {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      padding-bottom: 1.5rem;
+    }
+  }
+  &__description-label {
+    color: $Silver;
+    font-weight: 300;
+  }
+  &__description-input {
+    width: 100%;
+    height: 6.5rem;
+    padding: 1rem 0 4rem 0.8rem;
+    background-color: $Alabaster;
+    border: 1px solid $Silver;
+    border-radius: 0.25rem;
+    color: $BrainFlix-Black;
+  }
+
+  // Button section
+  &__btn-container {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      justify-content: flex-end;
+      width: 45%;
+      margin: 0 0 0 auto;
+      flex-direction: row-reverse;
+    }
+  }
+  &__btn-submit {
+    background-color: $BrainFlix-Blue;
+    background-image: url("../../assets/icons/publish.svg");
+    background-repeat: no-repeat;
+    background-position: left 0.75rem center;
+    width: 100%;
+    height: 3rem;
+    margin-top: 1rem;
+    border: $BrainFlix-Blue;
+    border-radius: 0.25rem;
+    color: $White;
+    text-align: center;
+  }
+
+  &__btn-submit:hover {
+    cursor: pointer;
+  }
+
+  &__btn-cancel {
+    background-color: transparent;
+    border: transparent;
+    color: $BrainFlix-Blue;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    height: 3rem;
+    margin-top: 1rem;
+  }
+
+  &__btn-cancel:hover {
+    cursor: pointer;
+  }
+
+  // Details section
+  &__details {
+    @include desktop {
+      width: 65%;
+      max-width: 40.5rem;
+      padding-left: 1.7rem;
+      border-bottom: 2px solid $Mercury;
+    }
+  }
+}
