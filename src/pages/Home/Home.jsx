@@ -4,7 +4,13 @@ import Comments from "../../components/comments/Comments";
 import Video from "../../components/video/Video";
 
 import videoData from "../../data/video-details.json";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+
+const API_BASE = "https://unit-3-project-api-0a5620414506.herokuapp.com";
+const API_KEY = "e0ef0a58-82e7-4a27-acd5-5bc52b6714f8"; // Replace with your actual API key
 
 function Home() {
   const [video, setVideo] = useState(videoData[0]);
