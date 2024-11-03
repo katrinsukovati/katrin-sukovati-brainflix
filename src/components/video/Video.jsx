@@ -3,7 +3,7 @@ import "./Video.scss";
 function Video({ video }) {
   return (
     <div className="video">
-      <video poster={video.image} className="video__content"></video>
+      <video controls poster={video.image} className="video__content"></video>
     </div>
   );
 }
