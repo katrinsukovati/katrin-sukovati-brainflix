@@ -109,46 +109,53 @@
 }
 
 .comment-container {
+  display: flex;
+  align-items: center; // Ensures the avatar aligns vertically centered with the text
   margin-bottom: 2rem;
+  border-top: 1px solid $Mercury;
+  padding-top: 16px;
 }
+
 .comment {
   display: flex;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  width: 100%;
 
-  @include tablet {
-    display: flex;
-    flex-direction: row;
-    padding: 30px 0rem;
-  }
-
-  @include desktop {
-    padding: 32px 20px 32px 0;
+  &__pic {
+    width: 48px; // Matching the size of comment-form__avatar
+    height: 48px;
+    background-color: #e1e1e1;
+    border-radius: 50%; // Circular shape
+    margin-right: 1.3rem;
+    background-image: url("../../assets/images/default-avatar.jpg"); // Replace with your image path
+    background-size: cover;
+    background-position: center;
   }
 
   &__info {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-  }
-
-  &__day {
-    color: $Silver;
   }
 
   &__person-information {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    padding-bottom: 12px;
-    border-top: 1px solid $Mercury;
-    padding-top: 20px;
+    align-items: center;
+    padding-bottom: 0.5rem;
   }
-  &__desc {
-    line-height: 20px;
-    @include tablet {
-      line-height: 22px;
-    }
-  }
+
   &__person-name {
     font-weight: 700;
+    color: $BrainFlix-Black;
+  }
+
+  &__day {
+    color: $Silver;
+    font-size: 0.875rem;
+  }
+
+  &__desc {
+    line-height: 1.5;
+    color: $BrainFlix-Black;
   }
 }

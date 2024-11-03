@@ -1,9 +1,10 @@
 import "./Comments.scss";
 
-function CommentsContainer({ video }) {
+function Comments({ video }) {
   let allComments = video.comments.map((comment) => {
     return (
       <div key={comment.id} className="comment-container">
+        <div className="comment__pic"></div>
         <div className="comment__info">
           <div className="comment__person-information">
             <p className="comment__person-name">{comment.name}</p>
@@ -44,4 +45,4 @@ function CommentsContainer({ video }) {
   );
 }
 
-export default CommentsContainer;
+export default Comments;
