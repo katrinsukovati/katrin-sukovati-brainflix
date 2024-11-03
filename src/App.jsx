@@ -2,10 +2,10 @@ import { useState } from "react";
 import "./App.scss";
 import Header from "./components/header/Header";
 import videoData from "./data/video-details.json";
-import Video from "./components/Video/Video";
-import VideoDetails from "./components/VideoDetails/VideoDetails";
-import NextVideos from "./components/NextVideos/NextVideos";
-import Comments from "./components/Comments/Comments";
+import Video from "./components/video/Video";
+import VideoDetails from "./components/videoDetails/VideoDetails";
+import NextVideos from "./components/nextVideos/NextVideos";
+import Comments from "./components/comments/Comments";
 
 function App() {
   const [video, setVideo] = useState(videoData[0]);
