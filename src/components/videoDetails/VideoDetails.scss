@@ -4,21 +4,9 @@
 @use "../../styles/partials/typography" as *;
 
 .video-details {
-  padding-top: 20px;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-bottom: 0;
+  padding: 20px 16px 0;
   @include tablet {
-    padding-top: 20px;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 0;
-  }
-  @include desktop {
-    padding-top: 20px;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 0;
+    padding: 20px 16px 0 16px;
   }
   &__header {
     display: flex;

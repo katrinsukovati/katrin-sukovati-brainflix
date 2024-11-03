@@ -1,7 +1,7 @@
 import "./Comments.scss";
 
 function Comments({ video }) {
-  let allComments = video.comments.map((comment) => {
+  const allComments = video.comments.map((comment) => {
     return (
       <div key={comment.id} className="comment-container">
         <div className="comment__pic"></div>

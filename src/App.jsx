@@ -24,7 +24,7 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <Header />
       {/* The actual video player */}
       <Video video={video} />
@@ -41,7 +41,7 @@ function App() {
           newVideoSelection={newVideoSelection}
         />
       </div>
-    </div>
+    </>
   );
 }
 
