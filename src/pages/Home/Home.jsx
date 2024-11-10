@@ -3,61 +3,58 @@ import NextVideos from "../../components/nextVideos/NextVideos";
 import Comments from "../../components/comments/Comments";
 import Video from "../../components/video/Video";
 
-import videoData from "../../data/video-details.json";
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
-const API_BASE = "https://unit-3-project-api-0a5620414506.herokuapp.com";
-const API_KEY = "e0ef0a58-82e7-4a27-acd5-5bc52b6714f8";
+// Use the base URL from environment variables
+const BASE_URL = import.meta.env.VITE_API_URL;
+console.log(BASE_URL);
 
 function Home() {
-  // store the currently selected video details
+  // Store the currently selected video details
   const [selectedVideo, setSelectedVideo] = useState(null);
-  // store the list of videos for the sidebar
+  // Store the list of videos for the sidebar
   const [videoList, setVideoList] = useState([]);
-  // retrieve the `id` parameter from the url
+  // Retrieve the `id` parameter from the URL
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // fetch the list of videos from the api
+  // Fetch the list of videos from the API
   const getVideoList = async () => {
     try {
-      const response = await axios.get(`${API_BASE}/videos?api_key=${API_KEY}`);
+      const response = await axios.get(`${BASE_URL}/videos`);
       setVideoList(response.data);
-      console.log(videoList);
+      console.log(response.data); // Updated to log response data
     } catch (error) {
       console.error("Error loading video list:", error);
     }
   };
 
-  // get the details of a specific video by id
+  // Get the details of a specific video by id
   const getVideoDetails = async (videoId) => {
     try {
-      const response = await axios.get(
-        `${API_BASE}/videos/${videoId}?api_key=${API_KEY}`
-      );
+      const response = await axios.get(`${BASE_URL}/videos/${videoId}`);
       setSelectedVideo(response.data);
     } catch (error) {
       console.error("Error loading video details:", error);
     }
   };
 
-  // load video list and selected video details when the component mounts or when `id` changes
+  // Load video list and selected video details when the component mounts or when `id` changes
   useEffect(() => {
     if (videoList.length === 0) {
       getVideoList();
     } else if (id) {
-      // only load video details if `id` is present
+      // Only load video details if `id` is present
       getVideoDetails(id);
     } else if (videoList.length > 0) {
-      // load default video (first in the list) if no id is present in the url
+      // Load default video (first in the list) if no id is present in the URL
       getVideoDetails(videoList[0].id);
     }
   }, [id, videoList]);
 
-  // function to update the URL when a new video is selected
+  // Function to update the URL when a new video is selected
   const handleVideoSelection = (videoId) => {
     navigate(`/video/${videoId}`);
   };
