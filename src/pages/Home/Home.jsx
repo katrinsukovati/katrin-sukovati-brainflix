@@ -6,52 +6,52 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
-// Use the base URL from environment variables
+// use the base url from environment variables
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 function Home() {
-  // Store the currently selected video details
+  // store the currently selected video details
   const [selectedVideo, setSelectedVideo] = useState(null);
-  // Store the list of videos for the sidebar
+  // store the list of videos for the sidebar
   const [videoList, setVideoList] = useState([]);
-  // Retrieve the `id` parameter from the URL
+  // retrieve the `id` parameter from the url
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Fetch the list of videos from the API
-  const getVideoList = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}/videos`);
-      setVideoList(response.data);
-    } catch (error) {
-      console.error("Error loading video list:", error);
-    }
-  };
-
-  // Get the details of a specific video by id
-  const getVideoDetails = async (videoId) => {
-    try {
-      const response = await axios.get(`${BASE_URL}/videos/${videoId}`);
-      setSelectedVideo(response.data);
-    } catch (error) {
-      console.error("Error loading video details:", error);
-    }
-  };
-
-  // Load video list and selected video details when the component mounts or when `id` changes
+  // fetch the list of videos from the api only once when the component mounts
   useEffect(() => {
-    if (videoList.length === 0) {
-      getVideoList();
-    } else if (id) {
-      // Only load video details if `id` is present
+    const getVideoList = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/videos`);
+        setVideoList(response.data);
+      } catch (error) {
+        console.error("error loading video list:", error);
+      }
+    };
+    getVideoList();
+  }, []); // empty dependency array ensures this runs only once on mount
+
+  // fetch the details of a specific video when `id` or `videoList` changes
+  useEffect(() => {
+    const getVideoDetails = async (videoId) => {
+      try {
+        const response = await axios.get(`${BASE_URL}/videos/${videoId}`);
+        setSelectedVideo(response.data);
+      } catch (error) {
+        console.error("error loading video details:", error);
+      }
+    };
+
+    if (id && videoList.length > 0) {
+      // load video details for the selected `id`
       getVideoDetails(id);
-    } else if (videoList.length > 0) {
-      // Load default video (first in the list) if no id is present in the URL
+    } else if (!id && videoList.length > 0) {
+      // if no `id` is in the url, load the first video in the list as default
       getVideoDetails(videoList[0].id);
     }
-  }, [id, videoList]);
+  }, [id, videoList]); // runs when `id` or `videoList` changes
 
-  // Function to update the URL when a new video is selected
+  // function to update the url when a new video is selected
   const handleVideoSelection = (videoId) => {
     navigate(`/video/${videoId}`);
   };
@@ -59,17 +59,17 @@ function Home() {
   return (
     selectedVideo && (
       <div>
-        {/* Main video player */}
+        {/* main video player */}
         <Video video={selectedVideo} />
 
         <div className="bottom-section">
           <div>
-            {/* Video details and comments */}
+            {/* video details and comments */}
             <VideoDetails video={selectedVideo} />
             <Comments video={selectedVideo} />
           </div>
 
-          {/* Next videos list */}
+          {/* next videos list */}
           <NextVideos
             allVideos={videoList.filter(
               (video) => video.id !== selectedVideo.id
