@@ -2,14 +2,12 @@ import VideoDetails from "../../components/videoDetails/VideoDetails";
 import NextVideos from "../../components/nextVideos/NextVideos";
 import Comments from "../../components/comments/Comments";
 import Video from "../../components/video/Video";
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
 // Use the base URL from environment variables
 const BASE_URL = import.meta.env.VITE_API_URL;
-console.log(BASE_URL);
 
 function Home() {
   // Store the currently selected video details
@@ -25,7 +23,6 @@ function Home() {
     try {
       const response = await axios.get(`${BASE_URL}/videos`);
       setVideoList(response.data);
-      console.log(response.data); // Updated to log response data
     } catch (error) {
       console.error("Error loading video list:", error);
     }

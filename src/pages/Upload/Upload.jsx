@@ -1,14 +1,38 @@
 import "./Upload.scss";
 import logo from "../../assets/images/Upload-video-preview.jpg";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 function Upload() {
   const navigate = useNavigate();
 
+  // this is a function to send post request to the backend
+  const postVideo = async (title, description) => {
+    try {
+      await axios.post(`${BASE_URL}/videos`, {
+        title: title,
+        description: description,
+      });
+      console.log("Video uploaded successfully!");
+
+      alert("Upload has been successful.");
+      navigate("/");
+    } catch (error) {
+      console.error("Video Upload Error:", error);
+    }
+  };
+
+  // this handles the new video submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("Upload has been successful.");
-    navigate("/");
+
+    const title = event.target.title.value;
+    const description = event.target.description.value;
+
+    postVideo(title, description);
   };
 
   return (
@@ -33,7 +57,8 @@ function Upload() {
               className="upload-video__title-input"
               name="title"
               placeholder="Add a title to your video"
-            ></input>
+              required
+            />
           </div>
           <div className="upload-video__description-container">
             <label className="upload-video__description-label">
@@ -43,13 +68,17 @@ function Upload() {
               className="upload-video__description-input"
               name="description"
               placeholder="Add a description to your video"
-            ></input>
+              required
+            />
           </div>
         </div>
         <div className="upload-video__btn-container">
-          <button className="upload-video__btn-submit">PUBLISH</button>
+          <button className="upload-video__btn-submit" type="submit">
+            PUBLISH
+          </button>
           <button
             className="upload-video__btn-cancel"
+            type="button"
             onClick={() => navigate("/")}
           >
             CANCEL

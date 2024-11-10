@@ -4,15 +4,15 @@
 @use "../../styles/partials/typography" as *;
 
 .header {
-  &__link {
-    display: flex;
-    justify-content: center;
-  }
-
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 0 16px;
+
+  &__link {
+    display: flex;
+    justify-content: center;
+  }
 
   @include tablet {
     margin: 16px 0;
@@ -101,7 +101,7 @@
   &__search {
     width: 85%;
     margin-bottom: 20px;
-    font-size: 16px;
+    font-size: 1rem;
     color: $BrainFlix-DarkBlack;
     border: 1.5px solid $Mercury;
     border-radius: 4px;

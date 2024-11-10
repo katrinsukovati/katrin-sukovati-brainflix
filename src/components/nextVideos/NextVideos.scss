@@ -15,9 +15,9 @@
     color: $Silver;
     margin-bottom: 10px;
     display: flex;
-    font-size: 15px;
+    font-size: 1rem;
     @include desktop {
-      font-size: 18px;
+      font-size: 1.25rem;
       margin-top: 30px;
     }
   }
@@ -33,7 +33,7 @@
 .video-thumbnail {
   display: flex;
   padding: 6px 0;
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
 
   &__img {
@@ -61,22 +61,22 @@
     width: 100%;
     font-weight: 700;
     margin: 0;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 16px;
     @include tablet {
-      font-size: 16px;
+      font-size: 1rem;
     }
     @include desktop {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 
   &__author {
     margin: 0;
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 16px;
     @include tablet {
-      font-size: 14px;
+      font-size: 0.875rem;
       line-height: 20px;
     }
   }
